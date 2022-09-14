@@ -1,0 +1,1571 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <title>MAP - Matrícula de Tributos</title>
+<link rel="shortcut icon" href="../image/sheld.ico"  type="../image/x-icon" />
+<link rel="Bookmark" href="../image/sheld.ico" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+<link href="../style/bootstrap.min.css" rel="stylesheet">
+<link href="../style/maincss.css" rel="stylesheet">     
+<style>@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');</style>
+
+    <!-- Custom styles for this template -->
+<style>
+.mapboxgl-popup {max-width: 300px;}
+.mapboxgl-popup-content {position: relative;background: #000;padding: 5px 8px 5px 8px;color:#eee;}
+.mapboxgl-popup-close-button{display:none}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip{border-top-color: #000;}
+.mapboxgl-ctrl-bottom-right{display:none}
+.mapboxgl-ctrl-bottom-left{display:none}
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+
+
+
+</style>
+
+<script>
+	$(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+
+
+</head>
+
+
+
+<body class="d-flex h-100 text-center text-white bg-dark background1">
+  
+  
+<div class="cover-container d-flex w-100 h-100  mx-auto flex-column" >
+
+<header >
+
+
+</header> 
+
+
+
+<div id="map"></div>
+
+
+
+</div>
+
+
+
+
+ 
+  
+  
+  
+  
+  
+  
+  
+  <script>
+  
+  
+  
+  
+  
+
+  
+
+
+
+
+  
+  
+  
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpdW5naGFuY2hpbmciLCJhIjoiQXFuRm5UWSJ9.sN_XbiTG2UGjtIRzGgTO8A';
+    var geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+		
+
+
+
+  
+{ 'type': 'Feature', 'properties': { 'message': '阿兹特克帝国驻华使馆', 'url': "../image/map.png" }, 'geometry': { 'type': 'Point', 'coordinates': [116.451617,39.942593] } }
+            
+	            
+					
+        ]
+    };
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	var filterGroup = document.getElementById('filter-group');
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [116.451617,39.942593], 
+        zoom: 13
+    });
+	
+	
+	
+
+	
+	
+
+
+
+
+    // Add markers to the map.
+    geojson.features.forEach(function (marker) {
+        // Create a DOM element for each marker.
+        var el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundImage =
+            'url('+marker.properties.url+')';
+        el.style.width = '60px';
+        el.style.height = '60px';
+        el.style.backgroundSize = '100%';
+
+
+       var popup = new mapboxgl.Popup({ offset: 5 }).setText(marker.properties.message);
+	   
+	   
+
+        // Add markers to the map.
+        new mapboxgl.Marker(el)
+		    .setPopup(popup) 
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+			
+			
+    });
+	
+	
+	
+
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake1', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-98.957462,19.321511,0 ],
+[-98.920212,19.305757,0 ],
+[-98.911408,19.304616,0 ],
+[-98.90603,19.300673,0 ],
+[-98.90877,19.293983,0 ],
+[-98.913893,19.29039,0 ],
+[-98.917959,19.29151,0 ],
+[-98.92931,19.27404,0 ],
+[-98.926907,19.270962,0 ],
+[-98.927722,19.26369,0 ],
+[-98.928752,19.261654,0 ],
+[-98.936348,19.254919,0 ],
+[-98.941509,19.252133,0 ],
+[-98.944824,19.252346,0 ],
+[-98.959254,19.226353,0 ],
+[-98.958642,19.221288,0 ],
+[-98.962907,19.220599,0 ],
+[-98.972086,19.223872,0 ],
+[-98.970444,19.230872,0 ],
+[-98.992052,19.234944,0 ],
+[-98.990958,19.223659,0 ],
+[-98.986613,19.219678,0 ],
+[-98.980664,19.219268,0 ],
+[-98.973651,19.221242,0 ],
+[-98.969213,19.220785,0 ],
+[-98.952527,19.208402,0 ],
+[-98.93902,19.209698,0 ],
+[-98.937855,19.2114,0 ],
+[-98.933451,19.209982,0 ],
+[-98.935747,19.22534,0 ],
+[-98.929825,19.233282,0 ],
+[-98.921671,19.24167,0 ],
+[-98.912659,19.246978,0 ],
+[-98.903389,19.246005,0 ],
+[-98.898239,19.2503,0 ],
+[-98.90562,19.255648,0 ],
+[-98.905792,19.263508,0 ],
+[-98.899784,19.272339,0 ],
+[-98.881931,19.287003,0 ],
+[-98.88588,19.306121,0 ],
+[-98.900986,19.308511,0 ],
+[-98.9105,19.305904,0 ],
+[-98.939094,19.319567,0 ],
+[-98.951111,19.321187,0 ],
+[-98.957462,19.321511,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake1',
+'type': 'fill',
+'source': 'lake1', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+	
+//一个区块		
+map.on('load', function () {
+// Add a data source containing GeoJSON data.
+map.addSource('lake2', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-98.920212,19.305757,0  ],
+[-98.957462,19.321511,0  ],
+[-98.958664,19.310009,0  ],
+[-98.980465,19.296724,0  ],
+[-99.020033,19.291459,0  ],
+[-99.002126,19.271038,0  ],
+[-99.000635,19.26608,0  ],
+[-99.005528,19.254108,0  ],
+[-98.997459,19.248112,0  ],
+[-98.992052,19.234944,0  ],
+[-98.970444,19.230872,0  ],
+[-98.962784,19.231337,0  ],
+[-98.959254,19.226353,0  ],
+[-98.944824,19.252346,0  ],
+[-98.947871,19.255162,0  ],
+[-98.949405,19.257572,0  ],
+[-98.949995,19.259942,0  ],
+[-98.949523,19.262434,0  ],
+[-98.943214,19.270314,0  ],
+[-98.934631,19.275337,0  ],
+[-98.92931,19.27404,0  ],
+[-98.917959,19.29151,0  ],
+[-98.920598,19.295125,0  ],
+[-98.922207,19.30117,0  ],
+[-98.920212,19.305757,0  ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake2',
+'type': 'fill',
+'source': 'lake2', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+	
+	
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake3', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.020033,19.291459,0 ],
+[ -99.035225,19.293403,0 ],
+[ -99.04089,19.296724,0 ],
+[ -99.061832,19.304663,0 ],
+[ -99.073849,19.315517,0 ],
+[ -99.096508,19.320863,0 ],
+[ -99.106293,19.326695,0 ],
+[ -99.128694,19.356174,0 ],
+[ -99.145968,19.350526,0 ],
+[ -99.150152,19.349182,0 ],
+[ -99.155989,19.346051,0 ],
+[ -99.210663,19.33123,0 ],
+[ -99.220619,19.318595,0 ],
+[ -99.219761,19.304015,0 ],
+[ -99.218044,19.295509,0 ],
+[ -99.195299,19.2964,0 ],
+[ -99.18603,19.294375,0 ],
+[ -99.172211,19.267721,0 ],
+[ -99.146011,19.276189,0 ],
+[ -99.137503,19.281272,0 ],
+[ -99.123845,19.278253,0 ],
+[ -99.107291,19.26837,0 ],
+[ -99.103997,19.272016,0 ],
+[ -99.100328,19.271692,0 ],
+[ -99.100113,19.269017,0 ],
+[ -99.098225,19.262798,0 ],
+[ -99.096913,19.254855,0 ],
+[ -99.092383,19.252969,0 ],
+[ -99.082958,19.250148,0 ],
+[ -99.080586,19.248274,0 ],
+[ -99.073677,19.24795,0 ],
+[ -99.065952,19.25427,0 ],
+[ -99.0490041,19.2547946,0 ],
+[ -99.038057,19.260712,0 ],
+[ -99.026127,19.260591,0 ],
+[ -99.013038,19.255952,0 ],
+[ -99.011589,19.254961,0 ],
+[ -99.005528,19.254108,0 ],
+[ -99.000635,19.26608,0 ],
+[ -99.006397,19.266136,0 ],
+[ -99.007168,19.266685,0 ],
+[ -99.009398,19.266666,0 ],
+[ -99.009086,19.267843,0 ],
+[ -99.011082,19.269256,0 ],
+[ -99.008976,19.271968,0 ],
+[ -99.0071299,19.2718366,0 ],
+[ -99.002126,19.271038,0 ],
+[ -99.020033,19.291459,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake3',
+'type': 'fill',
+'source': 'lake3', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束		
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake4', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-99.155989,19.346051,0 ],
+[-99.150152,19.349182,0 ],
+[-99.151762,19.353021,0 ],
+[-99.1475703,19.3555941,0 ],
+[-99.144198,19.35746,0 ],
+[-99.147352,19.377084,0 ],
+[-99.150045,19.379343,0 ],
+[-99.147512,19.380376,0 ],
+[-99.148772,19.389342,0 ],
+[-99.149148,19.38911,0 ],
+[-99.151111,19.389039,0 ],
+[-99.153641,19.389525,0 ],
+[-99.153461,19.39337,0 ],
+[-99.139082,19.402469,0 ],
+[-99.136121,19.405181,0 ],
+[-99.13571,19.40829,0 ],
+[-99.13388,19.420488,0 ],
+[-99.143212,19.421559,0 ],
+[-99.153781,19.425787,0 ],
+[-99.149945,19.435505,0 ],
+[-99.153038,19.435983,0 ],
+[-99.151043,19.442566,0 ],
+[-99.148149,19.44165,0 ],
+[-99.148006,19.442551,0 ],
+[-99.145796,19.442091,0 ],
+[-99.145312,19.443964,0 ],
+[-99.142685,19.443527,0 ],
+[-99.14254,19.444556,0 ],
+[-99.148813,19.449046,0 ],
+[-99.154886,19.450324,0 ],
+[-99.178314,19.45128,0 ],
+[-99.181883,19.450239,0 ],
+[-99.186475,19.442428,0 ],
+[-99.183947,19.430666,0 ],
+[-99.182121,19.429586,0 ],
+[-99.1758944,19.4309686,0 ],
+[-99.1745211,19.4299973,0 ],
+[-99.178176,19.424628,0 ],
+[-99.177747,19.421835,0 ],
+[-99.179764,19.417059,0 ],
+[-99.184356,19.414428,0 ],
+[-99.184399,19.410907,0 ],
+[-99.178905,19.395687,0 ],
+[-99.164142,19.377592,0 ],
+[-99.15762,19.367349,0 ],
+[-99.155602,19.349807,0 ],
+[-99.155989,19.346051,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake4',
+'type': 'fill',
+'source': 'lake4', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束		
+	
+	
+	//一个区块		
+map.on('load', function () {
+// Add a data source containing GeoJSON data.
+map.addSource('lake5', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.186475,19.442428,0 ],
+[ -99.181883,19.450239,0 ],
+[ -99.182636,19.45447,0 ],
+[ -99.180953,19.455736,0 ],
+[ -99.179528,19.457614,0 ],
+[ -99.182167,19.458105,0 ],
+[ -99.182838,19.457856,0 ],
+[ -99.184136,19.455358,0 ],
+[ -99.186475,19.442428,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake5',
+'type': 'fill',
+'source': 'lake5', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+
+	//一个区块		
+map.on('load', function () {
+// Add a data source containing GeoJSON data.
+map.addSource('lake6', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-99.180953,19.455736,0],
+[-99.177963,19.453332,0],
+[-99.178314,19.45128,0],
+[-99.17482,19.453169,0],
+[-99.177277,19.455237,0],
+[-99.179528,19.457614,0],
+[-99.180953,19.455736,0]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake6',
+'type': 'fill',
+'source': 'lake6', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+	
+	
+	
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake7', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-99.179528,19.457614,0 ],
+[-99.177277,19.455237,0 ],
+[-99.173373,19.456035,0 ],
+[-99.172205,19.453847,0 ],
+[-99.17482,19.453169,0 ],
+[-99.178314,19.45128,0 ],
+[-99.154886,19.450324,0 ],
+[-99.153321,19.455344,0 ],
+[-99.170451,19.458662,0 ],
+[-99.17706,19.457083,0 ],
+[-99.179528,19.457614,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake7',
+'type': 'fill',
+'source': 'lake7', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake8', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-99.182838,19.457856,0 ],
+[-99.179528,19.457614,0 ],
+[-99.176878,19.46352,0 ],
+[-99.170537,19.465378,0 ],
+[-99.170451,19.458662,0 ],
+[-99.153321,19.455344,0 ],
+[-99.147488,19.458907,0 ],
+[-99.119682,19.482777,0 ],
+[-99.119146,19.487935,0 ],
+[-99.116764,19.492001,0 ],
+[-99.113438,19.494772,0 ],
+[-99.112902,19.498554,0 ],
+[-99.122064,19.503287,0 ],
+[-99.122471,19.508506,0 ],
+[-99.133759,19.511337,0 ],
+[-99.140196,19.522583,0 ],
+[-99.158844,19.531278,0 ],
+[-99.161665,19.529923,0 ],
+[-99.166295,19.530499,0 ],
+[-99.166031,19.524362,0 ],
+[-99.172211,19.523876,0 ],
+[-99.179592,19.51789,0 ],
+[-99.182838,19.457856,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake8',
+'type': 'fill',
+'source': 'lake8', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake9', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-99.152318,19.39418,0 ],
+[-99.149475,19.393897,0 ],
+[-99.148555,19.392925,0 ],
+[-99.147978,19.390294,0 ],
+[-99.148772,19.389342,0 ],
+[-99.147512,19.380376,0 ],
+[-99.142941,19.37988,0 ],
+[-99.138907,19.378603,0 ],
+[-99.139251,19.376924,0 ],
+[-99.142277,19.376221,0 ],
+[-99.147352,19.377084,0 ],
+[-99.144198,19.35746,0 ],
+[-99.145968,19.350526,0 ],
+[-99.128694,19.356174,0 ],
+[-99.128008,19.360101,0 ],
+[-99.1208397,19.3625597, ],
+[-99.112494,19.362187,0 ],
+[-99.10346,19.360142,0 ],
+[-99.101948,19.364292,0 ],
+[-99.111732,19.37416,0 ],
+[-99.115901,19.376175,0 ],
+[-99.115969,19.377762,0 ],
+[-99.139082,19.402469,0 ],
+[-99.152318,19.39418,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake9',
+'type': 'fill',
+'source': 'lake9', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+	
+	
+
+	
+	
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lakea0', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.13571,19.40829,0 ],
+[ -99.136121,19.405181,0 ],
+[ -99.135931,19.402396,0 ],
+[ -99.139082,19.402469,0 ],
+[ -99.115969,19.377762,0 ],
+[ -99.1131791,19.3765943,0 ],
+[ -99.109873,19.375909,0 ],
+[ -99.11017,19.37461,0 ],
+[ -99.111732,19.37416,0 ],
+[ -99.101948,19.364292,0 ],
+[ -99.091144,19.365244,0 ],
+[ -99.097366,19.39261,0 ],
+[ -99.10039,19.39574,0 ],
+[ -99.105215,19.397088,0 ],
+[ -99.108079,19.404107,0 ],
+[ -99.114628,19.406495,0 ],
+[ -99.118686,19.406414,0 ],
+[ -99.11839,19.40965,0 ],
+[ -99.121743,19.411348,0 ],
+[ -99.121826,19.40925,0 ],
+[ -99.13571,19.40829,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lakea0',
+'type': 'fill',
+'source': 'lakea0', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lakea1', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.147488,19.458907,0  ],
+[ -99.14153,19.458364,0  ],
+[ -99.135786,19.456344,0  ],
+[ -99.1294464,19.4529217,  ],
+[ -99.125422,19.452206,0  ],
+[ -99.12565,19.447254,0  ],
+[ -99.122972,19.442667,0  ],
+[ -99.118533,19.438161,0  ],
+[ -99.120428,19.422147,0  ],
+[ -99.121844,19.411883,0  ],
+[ -99.1180648,19.4107931,  ],
+[ -99.114348,19.410623,0  ],
+[ -99.114628,19.406495,0  ],
+[ -99.108079,19.404107,0  ],
+[ -99.105605,19.403954,0  ],
+[ -99.091532,19.401772,0  ],
+[ -99.090732,19.40001,0  ],
+[ -99.089159,19.398692,0  ],
+[ -99.089406,19.394614,0  ],
+[ -99.097366,19.39261,0  ],
+[ -99.091144,19.365244,0  ],
+[ -99.086101,19.362166,0  ],
+[ -99.0817584,19.3575179,  ],
+[ -99.065094,19.34678,0  ],
+[ -99.0493144,19.3413214,  ],
+[ -99.034796,19.332769,0  ],
+[ -98.999176,19.346132,0  ],
+[ -98.97995,19.357146,0  ],
+[ -98.968964,19.362328,0  ],
+[ -98.96965,19.37075,0  ],
+[ -98.984756,19.398602,0  ],
+[ -98.978577,19.416735,0  ],
+[ -98.959351,19.429687,0  ],
+[ -99.080041,19.437855,0  ],
+[ -99.086023,19.438502,0  ],
+[ -99.085902,19.440295,0  ],
+[ -99.08462,19.442172,0  ],
+[ -99.082522,19.443018,0  ],
+[ -99.106186,19.48221,0  ],
+[ -99.119682,19.482777,0  ],
+[ -99.147488,19.458907,0  ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lakea1',
+'type': 'fill',
+'source': 'lakea1', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake12', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.051361,19.555261,0 ],
+[ -99.051158,19.549053,0 ],
+[ -99.052671,19.542845,0 ],
+[ -99.06105,19.533644,0 ],
+[ -99.06239,19.522663,0 ],
+[ -99.07402,19.509396,0 ],
+[ -99.08608,19.507494,0 ],
+[ -99.09462,19.49378,0 ],
+[ -99.106186,19.48221,0 ],
+[ -99.082522,19.443018,0 ],
+[ -99.079895,19.441599,0 ],
+[ -99.078895,19.440142,0 ],
+[ -99.080041,19.437855,0 ],
+[ -98.959351,19.429687,0 ],
+[ -98.937378,19.423859,0 ],
+[ -98.911285,19.421268,0 ],
+[ -98.897552,19.425154,0 ],
+[ -98.884506,19.433572,0 ],
+[ -98.882961,19.445227,0 ],
+[ -98.887424,19.456557,0 ],
+[ -98.882188,19.473389,0 ],
+[ -98.88163,19.483262,0 ],
+[ -98.882338,19.491636,0 ],
+[ -98.889914,19.495803,0 ],
+[ -98.898216,19.506017,0 ],
+[ -98.89974,19.51793,0 ],
+[ -98.928452,19.556555,0 ],
+[ -98.938751,19.568848,0 ],
+[ -98.953857,19.579846,0 ],
+[ -98.957291,19.595372,0 ],
+[ -98.982523,19.613162,0 ],
+[ -99.009132,19.623832,0 ],
+[ -99.025612,19.651318,0 ],
+[ -99.032822,19.668776,0 ],
+[ -99.047154,19.683931,0 ],
+[ -99.055823,19.68096,0 ],
+[ -99.059815,19.68785,0 ],
+[ -99.105526,19.689147,0 ],
+[ -99.111234,19.683748,0 ],
+[ -99.120527,19.6829899,0 ],
+[ -99.127303,19.679181,0 ],
+[ -99.132055,19.680647,0 ],
+[ -99.151437,19.706346,0 ],
+[ -99.172212,19.699001,0 ],
+[ -99.168606,19.658586,0 ],
+[ -99.14217,19.658025,0 ],
+[ -99.127407,19.662634,0 ],
+[ -99.104575,19.656411,0 ],
+[ -99.094105,19.647599,0 ],
+[ -99.076507,19.641214,0 ],
+[ -99.0477426,19.6125031,0 ],
+[ -99.028015,19.597313,0 ],
+[ -99.032822,19.575318,0 ],
+[ -99.051361,19.555261,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake12',
+'type': 'fill',
+'source': 'lake12', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+
+
+
+
+
+
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake13', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[-99.172212,19.699001,0     ],
+[-99.151437,19.706346,0     ],
+[-99.147526,19.708437,0     ],
+[-99.133524,19.712942,0     ],
+[-99.1719,19.739187,0       ],
+[-99.180258,19.745195,0     ],
+[-99.17902,19.751484,0      ],
+[-99.100628,19.812738,0     ],
+[-99.122601,19.813061,0     ],
+[-99.1397011,19.806724,0    ],
+[-99.1457092,19.8054319,0   ],
+[-99.149765,19.80414,0      ],
+[-99.182168,19.797638,0     ],
+[-99.195728,19.791903,0     ],
+[-99.185514,19.765815,0     ],
+[-99.185786,19.75041,0      ],
+[-99.19487,19.715324,0      ],
+[-99.172212,19.699001,0     ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake13',
+'type': 'fill',
+'source': 'lake13', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//一条线条	
+map.on('load', function () {
+map.addLayer({
+"id": "route1",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.152438,19.438553],
+[-99.153372,19.438857],
+[-99.162287,19.442529],
+[-99.164852,19.443106],
+[-99.16939,19.445766],
+[-99.17307,19.451138],
+[-99.183123,19.458301]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+//一条线条结束
+
+
+map.on('load', function () {
+map.addLayer({
+"id": "route2",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.15365,19.45437],
+[-99.168112,19.456838],
+[-99.1823174,19.4595088]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+
+
+map.on('load', function () {
+map.addLayer({
+"id": "route3",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.149527,19.389853],
+[-99.14781,19.387738],
+[-99.1456,19.38456],
+[-99.141352,19.377961]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+
+map.on('load', function () {
+map.addLayer({
+"id": "route4",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.13692,19.402963],
+[-99.145202,19.402275],
+[-99.159193,19.401587],
+[-99.168033,19.400332],
+[-99.170265,19.399846],
+[-99.186015,19.399725]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+map.on('load', function () {
+map.addLayer({
+"id": "route5",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.165742,19.443563],
+[-99.178176,19.424628]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+	
+map.on('load', function () {
+map.addLayer({
+"id": "route6",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.167575,19.529823],
+[-99.13927,19.4572591]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});	
+map.on('load', function () {
+map.addLayer({
+"id": "route7",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.143536,19.360188],
+[-99.122335,19.357785]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+	
+	map.on('load', function () {
+map.addLayer({
+"id": "route8",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[ -99.145702,19.350177],
+[ -99.141839,19.368154],
+[ -99.135016,19.412926]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});	
+
+map.on('load', function () {
+map.addLayer({
+"id": "route9",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[ -99.156774,19.350218],
+[ -99.144328,19.357344]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+map.on('load', function () {
+map.addLayer({
+"id": "route10",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.011589,19.254961],
+[-99.005606,19.26918],
+[-99.017794,19.292837]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+	
+map.on('load', function () {
+map.addLayer({
+"id": "route11",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[-99.1294464,19.4529217,],
+[-99.118399,19.483996]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#ffffff",
+"line-width": 3
+}
+});
+});
+
+map.on('load', function () {
+map.addLayer({
+"id": "route12",
+"type": "line",
+"source": {
+"type": "geojson",
+"data": {
+"type": "Feature",
+"properties": {},
+"geometry": {
+"type": "LineString",
+"coordinates": [
+[ -99.106269,19.4879 ],
+[ -99.071379,19.394417  ],
+[ -99.076142,19.35296  ],
+[ -99.075713,19.35292  ],
+[ -99.071057,19.394377  ],
+[ -99.105947,19.488102  ]
+]
+}
+}
+},
+"layout": {
+"line-join": "round",
+"line-cap": "round"
+},
+"paint": {
+"line-color": "#724b1c",
+"line-width": 4
+}
+});
+});	
+	
+	
+
+
+
+
+
+
+
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake14', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.076426,19.820494,0 ],
+[ -99.100628,19.812738,0 ],
+[ -99.17902,19.751484,0 ],
+[ -99.171153,19.748139,0 ],
+[ -99.1719,19.739187,0 ],
+[ -99.133524,19.712942,0 ],
+[ -99.110498,19.715162,0 ],
+[ -99.104877,19.713745,0 ],
+[ -99.054451,19.724211,0 ],
+[ -99.04844,19.724899,0 ],
+[ -99.04256,19.720062,0 ],
+[ -99.08977,19.792168,0 ],
+[ -99.096261,19.791295,0 ],
+[ -99.102633,19.794762,0 ],
+[ -99.104581,19.798161,0 ],
+[ -99.101003,19.80162,0 ],
+[ -99.09565,19.804744,0 ],
+[ -99.089942,19.804926,0 ],
+[ -99.084749,19.802444,0 ],
+[ -99.076426,19.820494,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake14',
+'type': 'fill',
+'source': 'lake14', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+
+
+
+
+
+//一个区块		
+map.on('load', function () {
+
+
+// Add a data source containing GeoJSON data.
+map.addSource('lake15', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'geometry': {
+'type': 'Polygon',
+// These coordinates outline Maine.
+'coordinates': [
+[
+[ -99.076426,19.820494,0 ],
+[ -99.084749,19.802444,0 ],
+[ -99.085457,19.796135,0 ],
+[ -99.08977,19.792168,0 ],
+[ -99.04256,19.720062,0 ],
+[ -99.042173,19.715224,0 ],
+[ -99.049728,19.713526,0 ],
+[ -99.053763,19.71605,0 ],
+[ -99.054451,19.724211,0 ],
+[ -99.104877,19.713745,0 ],
+[ -99.101315,19.708774,0 ],
+[ -99.101318,19.702693,0 ],
+[ -99.105526,19.689147,0 ],
+[ -99.059815,19.68785,0 ],
+[ -99.053591,19.690943,0 ],
+[ -99.04857,19.68974,0 ],
+[ -99.047154,19.683931,0 ],
+[ -99.032822,19.668776,0 ],
+[ -99.014623,19.690356,0 ],
+[ -98.998489,19.696577,0 ],
+[ -98.983383,19.704981,0 ],
+[ -98.97583,19.721464,0 ],
+[ -98.956776,19.740935,0 ],
+[ -98.974457,19.761534,0 ],
+[ -99.0075886,19.7784459,0 ],
+[ -99.020203,19.790816,0 ],
+[ -99.021577,19.801616,0 ],
+[ -99.034044,19.809816,0 ],
+[ -99.047199,19.81553,0 ],
+[ -99.076426,19.820494,0 ]
+]
+]
+}
+}
+});
+ 
+// Add a new layer to visualize the polygon.
+map.addLayer({
+'id': 'lake15',
+'type': 'fill',
+'source': 'lake15', // reference the data source
+'layout': {},
+'paint': {
+'fill-color': '#75cff0', // blue color fill
+'fill-opacity': 1
+}
+});
+})	
+//一个区块结束	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+	
+	
+
+
+</script>
+
+    
+
+
+
+    
+  </body>
+</html>
