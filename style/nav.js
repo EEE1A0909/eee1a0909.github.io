@@ -20,14 +20,7 @@ var htmlContent = `<div style="width:1024px;height:36px;z-index:100;position: re
 	<a href="../page/embassy4.html">签证业务</a>
   </div>
 </div>
-<div class="dropdown" style="float:left;">
-<button class="dropbtn"><b>使馆项目</b></button>
-  <div class="dropdown-content dropdown-content1">
-    <a href="../page/project1.html">[贡品清单] 手抄本解读</a>
-    <a href="../page/project2.html">解读 [门多萨手抄本] 系列</a>
-    <a href="../page/project4.html">历史剧 [埃尔南] 翻译</a>
-  </div>
-</div>
+<div  style="float:left;"><a href="../page/project.html"><button class="dropbtn"><b>文化项目</b></button></a></div>
 <div  style="float:left;"><a href="../book/index.html"><button class="dropbtn"><b>图书馆</b></button></a></div>
 <div  style="float:left;"><a href="https://weibo.com/u/7594804434"target="_blank" ><button class="dropbtn"><b>联系我们</b></button></a></div>
 </div>`;

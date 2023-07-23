@@ -129,6 +129,7 @@ body,a:active {
 
 .text{text-indent:2em;line-height:30px;padding-top:8px;}
 .text1{line-height:30px;padding-top:8px;}
+.text2{line-height:26px;padding-top:5px;}
 
 .h8{font-size:22px;background:#33333377;}
 
@@ -215,3 +216,5 @@ html::-webkit-scrollbar-thumb:active {
 .button-24:active {
   opacity: .5;
 }
+
+#container { display: flex; align-items: center; justify-content: space-between; width: 100%; } 
